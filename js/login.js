@@ -54,7 +54,7 @@ async function handleLogin(event) {
             showSuccess('Успішний вхід! Перенаправлення...', errorDiv, successDiv);
             
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'main.html';
             }, 1000);
         } else {
             showError('Неправильний логін або пароль', errorDiv, successDiv);
@@ -95,7 +95,7 @@ async function handleRegister(event) {
         const users = getStoredUsers();
         
         if (users.some(u => u.username === username)) {
-            showError('Користувач з таким логіном вже існує', errorDiv, successDiv);
+            showError('Користувач з таким логіном вже існує', errorDiv, successDiv); 
             return;
         }
         
