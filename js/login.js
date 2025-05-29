@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentUser = getCurrentUser();
     if (currentUser) {
         // Якщо користувач вже авторизований, перенаправляємо на головну сторінку
-        window.location.href = 'index.html';
+        window.location.href = 'main.html';
         return; // Важливо вийти з функції, щоб подальший код не виконувався
     }
     
