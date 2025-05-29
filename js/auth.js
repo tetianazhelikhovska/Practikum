@@ -9,7 +9,7 @@ export function getStoredUsers() {
         const users = localStorage.getItem('users');
         return users ? JSON.parse(users) : [];
     } catch (error) {
-        console.error('Помилка при отриманні користувачів з localStorage:', error);
+        console.error('Помилка при отриманні користувачів з localStorage:', error); 
         return [];
     }
 }
