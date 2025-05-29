@@ -248,25 +248,49 @@ function applyQuadrantEffect(ctx, width, height, colorScheme) {
     ctx.fillRect(width/2, height/2, width/2, height/2);
 }
 
+
+
+
 // Сітка
 function applyGridEffect(ctx, width, height, colorScheme) {
     const colors = getColorPalette(colorScheme);
-    const gridSize = 50;
-    
-    for (let x = 0; x < width; x += gridSize) {
-        for (let y = 0; y < height; y += gridSize) {
-            const colorIndex = Math.floor((x + y) / gridSize) % colors.length;
-            const nextColorIndex = (colorIndex + 1) % colors.length;
-            
-            const gradient = ctx.createLinearGradient(x, y, x + gridSize, y + gridSize);
-            gradient.addColorStop(0, colors[colorIndex]);
-            gradient.addColorStop(1, colors[nextColorIndex]);
-            
-            ctx.fillStyle = gradient;
-            ctx.fillRect(x, y, gridSize, gridSize);
-        }
+    const cellSize = 50;
+
+    // Вибираємо перший і останній кольори для градієнта
+    const colorStart = colors[0];
+    const colorEnd = colors[colors.length - 1];
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.lineWidth = 2;
+
+    // Вертикальні лінії з градієнтом
+    for (let x = 0; x <= width; x += cellSize) {
+        const gradient = ctx.createLinearGradient(x, 0, x, height);
+        gradient.addColorStop(0, colorStart);
+        gradient.addColorStop(1, colorEnd);
+        ctx.strokeStyle = gradient;
+
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+    }
+
+    // Горизонтальні лінії з градієнтом
+    for (let y = 0; y <= height; y += cellSize) {  
+        const gradient = ctx.createLinearGradient(0, y, width, y);
+        gradient.addColorStop(0, colorStart);
+        gradient.addColorStop(1, colorEnd);
+        ctx.strokeStyle = gradient;
+
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
     }
 }
+
+
 
 // Коло по центру
 function applyCircleEffect(ctx, width, height, colorScheme) {
@@ -350,8 +374,8 @@ function handleHideMessage() {
 // Обробка витягування повідомлення
 function handleExtractMessage() {
     if (!currentImage) {
-        alert('Будь ласка, завантажте зображення спочатку');
-        return;
+        alert('Будь ласка, завантажте зображення спочатку'); Обробити
+        return; 
     }
     
     console.log('Витягування прихованого повідомлення');
