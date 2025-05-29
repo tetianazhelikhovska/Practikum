@@ -1,4 +1,4 @@
-// js/index.js
+// js/main.js
 import { getCurrentUser, logout } from './auth.js'; // Імпортуємо з нового файлу
 
 document.addEventListener('DOMContentLoaded', function() {
