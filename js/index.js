@@ -1,4 +1,4 @@
-// js/login.js
+// js/index.js
 import { getStoredUsers, setStoredUsers, getCurrentUser, setCurrentUser, showError, showSuccess, clearMessages } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', function() { 
